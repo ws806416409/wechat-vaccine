@@ -40,8 +40,8 @@ public class UserInfoEntity implements Serializable {
     @TableField("phone")
     private String phone;
 
-    @TableField("sex")
-    private String sex;
+    @TableField("gender")
+    private String gender;
 
     @TableField("age")
     private Integer age;

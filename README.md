@@ -36,8 +36,8 @@
 - real_name
 - id_card
 - phone
-- sex
-- age·
+- gender
+- age
 - allergy // 过敏史
 - adverse_reaction // 不良反应史
 
