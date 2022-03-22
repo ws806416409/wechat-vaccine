@@ -28,7 +28,7 @@ public class VaccineController {
 
     @RequestMapping("/add")
     @ApiOperation(value = "通过疫苗信息添加",notes = "传入疫苗的基本信息")
-    public Object addVaccine(VaccineEntity vaccine) {
+    public JSONObject addVaccine(VaccineEntity vaccine) {
         JSONObject jsonObject = new JSONObject();
         if (vaccine != null) {
             mpVaccineService.save(vaccine);
@@ -43,6 +43,20 @@ public class VaccineController {
     @ApiOperation(value = "通过id删除",notes = "传入疫苗的id")
     public void removeVaccine(@RequestParam Integer id) {
         mpVaccineService.removeById(id);
+    }
+
+    @RequestMapping("/getInfo")
+    @ApiOperation(value = "通过id查询", notes = "传入疫苗id")
+    public JSONObject getById(@RequestParam Integer id) {
+        VaccineEntity vaccine = mpVaccineService.getById(id);
+        JSONObject jsonObject = new JSONObject();
+        if (vaccine != null) {
+            jsonObject.put("vaccineInfo", vaccine);
+            jsonObject.put("result", "success");
+        } else {
+            jsonObject.put("result", "false");
+        }
+        return jsonObject;
     }
 
 }
