@@ -25,7 +25,7 @@ public class UserEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "uid", type = IdType.ASSIGN_ID)
+    @TableId(value = "uid", type = IdType.AUTO)
     private Integer uid;
 
     @TableField("username")
@@ -35,7 +35,7 @@ public class UserEntity implements Serializable {
     private String password;
 
     @TableField("permission")
-    private String permission;
+    private Integer permission;
 
 
 }

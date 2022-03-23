@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.spring.web.json.Json;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/vi/info")
-@Api(value = "疫苗接种管理", tags = "疫苗接种管理API")
+@Api(value = "疫苗接种地管理", tags = "疫苗接种管理API")
 public class VaccinationInfoController {
 
     @Autowired
@@ -46,20 +46,23 @@ public class VaccinationInfoController {
     }
 
     @RequestMapping("/add")
-    @ApiOperation(value = "增加接种地信息")
-    public void addInfo(@RequestParam("vaccination_id") Integer vid,
-                        @RequestParam("vaccination_place") String place,
-                        @RequestParam("vaccination_open_time") LocalDateTime vtime,
-                        @RequestParam("vaccine_dose") Integer dose){
+    @ApiOperation(value = "增加接种地信息", notes = "传入vaccination_id, vaccination_place, vaccination_open_time, vaccine_dose")
+    public void addInfo(@RequestParam("vid") Integer vid,
+                        @RequestParam("place") String place,
+                        @RequestParam("vtime") String time,
+                        @RequestParam("dose") Integer dose,
+                        @RequestParam("rank") Integer rank){
         VaccinationInfoEntity vaccinationInfo = new VaccinationInfoEntity();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime vTime = LocalDateTime.parse(time, dateTimeFormatter);
         vaccinationInfo.setVid(vid);
         vaccinationInfo.setPlace(place);
-        vaccinationInfo.setVtime(vtime);
+        vaccinationInfo.setVtime(vTime);
         vaccinationInfo.setDose(dose);
-        int rank = (int) mpVaccinationInfoService.count();
-        rank += 1;
         vaccinationInfo.setRank(rank);
+        vaccinationInfo.setId(null);
         mpVaccinationInfoService.save(vaccinationInfo);
+
     }
 
     @RequestMapping("/update")
