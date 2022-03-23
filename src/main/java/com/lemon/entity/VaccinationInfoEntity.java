@@ -45,13 +45,13 @@ public class VaccinationInfoEntity implements Serializable {
      * 剩余剂量
      */
     @TableField("dose")
-    private String dose;
+    private Integer dose;
 
     /**
      * 排队人数
      */
     @TableField("rank")
-    private String rank;
+    private Integer rank;
 
 
 }

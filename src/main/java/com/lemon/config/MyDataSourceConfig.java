@@ -1,4 +1,4 @@
-package com.lemon.config;
+/*package com.lemon.config;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
@@ -17,4 +17,4 @@ public class MyDataSourceConfig {
         DruidDataSource druidDataSource = new DruidDataSource();
         return druidDataSource;
     }
-}
+}*/
