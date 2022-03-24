@@ -71,4 +71,12 @@ public class VaccinationInfoController {
         mpVaccinationInfoService.updateById(vaccinationInfo);
     }
 
+    @RequestMapping("/find")
+    public JSONObject findById(Integer id){
+        VaccinationInfoEntity info = mpVaccinationInfoService.getById(id);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("vnInfo", info);
+        return jsonObject;
+    }
+
 }

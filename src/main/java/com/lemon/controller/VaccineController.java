@@ -1,6 +1,7 @@
 package com.lemon.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lemon.entity.VaccinationInfoEntity;
 import com.lemon.entity.VaccineEntity;
 import com.lemon.service.MPVaccineService;
 import io.swagger.annotations.Api;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -25,6 +28,15 @@ public class VaccineController {
 
     @Autowired
     private MPVaccineService mpVaccineService;
+
+    @RequestMapping("/getAll")
+    @ApiOperation(value = "获取疫苗列表")
+    public JSONObject getViList(){
+        List<VaccineEntity> vList = mpVaccineService.list();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("vList", vList);
+        return jsonObject;
+    }
 
     @RequestMapping("/add")
     @ApiOperation(value = "通过疫苗信息添加",notes = "传入疫苗的基本信息")
@@ -58,5 +70,12 @@ public class VaccineController {
         }
         return jsonObject;
     }
+
+    @RequestMapping("/update")
+    @ApiOperation(value = "修改疫苗信息")
+    public void updateInfo(VaccineEntity vaccine){
+        mpVaccineService.updateById(vaccine);
+    }
+
 
 }
