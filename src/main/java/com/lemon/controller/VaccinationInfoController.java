@@ -1,6 +1,7 @@
 package com.lemon.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lemon.entity.VaccinationInfoEntity;
 import com.lemon.service.MPVaccinationInfoService;
 import io.swagger.annotations.Api;
@@ -34,6 +35,17 @@ public class VaccinationInfoController {
     @ApiOperation(value = "获取疫苗接种地情况列表")
     public JSONObject getViList(){
         List<VaccinationInfoEntity> viList = mpVaccinationInfoService.list();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("viList", viList);
+        return jsonObject;
+    }
+
+    @RequestMapping("/validInfo")
+    @ApiOperation("获取有效预约信息")
+    public JSONObject selectByDose(){
+        QueryWrapper<VaccinationInfoEntity> qu = new QueryWrapper<>();
+        qu.ge("dose", 1);
+        List<VaccinationInfoEntity> viList = mpVaccinationInfoService.list(qu);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("viList", viList);
         return jsonObject;
