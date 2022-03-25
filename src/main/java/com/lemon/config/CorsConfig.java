@@ -8,7 +8,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * @author DizzyLime
+ * @author ws
  * @date 2022/3/22 14:55
  * @blog https://lemonws.top
  * @github https://github.com/ws806416409

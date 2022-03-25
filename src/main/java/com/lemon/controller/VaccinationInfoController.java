@@ -3,9 +3,7 @@ package com.lemon.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lemon.entity.VaccinationInfoEntity;
-import com.lemon.entity.VaccineEntity;
 import com.lemon.service.MPVaccinationInfoService;
-import com.lemon.service.MPVaccineService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ import java.util.List;
  *  前端控制器
  * </p>
  *
- * @author lemon
+ * @author ws
  * @since 2022-03-22
  */
 @RestController
