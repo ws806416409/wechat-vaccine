@@ -3,7 +3,9 @@ package com.lemon.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lemon.entity.VaccinationInfoEntity;
+import com.lemon.entity.VaccineEntity;
 import com.lemon.service.MPVaccinationInfoService;
+import com.lemon.service.MPVaccineService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +44,10 @@ public class VaccinationInfoController {
 
     @RequestMapping("/validInfo")
     @ApiOperation("获取有效预约信息")
-    public JSONObject selectByDose(){
+    public JSONObject selectByDose(@RequestParam("vid") Integer vid){
         QueryWrapper<VaccinationInfoEntity> qu = new QueryWrapper<>();
         qu.ge("dose", 1);
+        qu.eq("vid", vid);
         List<VaccinationInfoEntity> viList = mpVaccinationInfoService.list(qu);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("viList", viList);

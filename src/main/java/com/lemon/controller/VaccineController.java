@@ -3,6 +3,7 @@ package com.lemon.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.lemon.entity.VaccinationInfoEntity;
 import com.lemon.entity.VaccineEntity;
+import com.lemon.service.MPVaccinationInfoService;
 import com.lemon.service.MPVaccineService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,9 +30,10 @@ public class VaccineController {
     @Autowired
     private MPVaccineService mpVaccineService;
 
+
     @RequestMapping("/getAll")
     @ApiOperation(value = "获取疫苗列表")
-    public JSONObject getViList(){
+    public JSONObject getVList(){
         List<VaccineEntity> vList = mpVaccineService.list();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("vList", vList);
