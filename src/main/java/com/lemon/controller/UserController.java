@@ -98,6 +98,10 @@ public class UserController {
             jsonObject.put("msg","注册成功");
         }
         return jsonObject;
+    }
 
+    @RequestMapping("/delete")
+    public void removeById(Integer id){
+        mpUserService.removeById(id);
     }
 }

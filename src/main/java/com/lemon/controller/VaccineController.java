@@ -28,7 +28,6 @@ public class VaccineController {
     @Autowired
     private MPVaccineService mpVaccineService;
 
-
     @RequestMapping("/getAll")
     @ApiOperation(value = "获取疫苗列表")
     public JSONObject getVList(){

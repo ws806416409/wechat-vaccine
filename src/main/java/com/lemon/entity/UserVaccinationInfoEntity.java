@@ -28,8 +28,8 @@ public class UserVaccinationInfoEntity implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @TableField("vid")
-    private Integer vid;
+    @TableField("uid")
+    private Integer uid;
 
     @TableField("viid")
     private Integer viid;
